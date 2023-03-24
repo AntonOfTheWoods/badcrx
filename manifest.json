@@ -1,0 +1,24 @@
+{
+  "background": {
+    "service_worker": "src/background.ts"
+  },
+  "description": "test extension",
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "manifest_version": 3,
+  "name": "test extension",
+  "options_page": "src/options.html",
+  "permissions": ["activeTab", "scripting"],
+  "version": "1.0.0",
+  "action": {
+    "default_title": "Test me!"
+  },
+  "content_scripts": [{
+      "run_at": "document_start",
+      "matches": [ "https://www.google.com/*" ],
+      "js": ["src/content1.ts"]
+  }],
+  "web_accessible_resources": [{
+    "resources": ["src/content1.ts"],
+    "matches": ["<all_urls>"]
+  }]
+}
